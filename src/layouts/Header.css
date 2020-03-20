@@ -1,0 +1,14 @@
+.container-ext {
+  line-height: 5;
+}
+
+.brand-logo {
+  font-size: x-large;
+  padding: 0 15px;
+  font-weight: bold;
+}
+
+a,a:hover,a:visited {
+  text-decoration: none;
+  color: #333;
+}

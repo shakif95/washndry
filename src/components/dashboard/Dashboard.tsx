@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { LeftNav } from '../nav/LeftNav';
-import { TopNav } from '../nav/TopNav';
+import { SideBar } from '../nav/SideBar';
 
 export interface DashboardProps {
   children?: React.Component;
@@ -9,15 +7,8 @@ export interface DashboardProps {
 
 export const Dashboard: React.FC<any> = props => {
   return (
-    <Container fluid>
-      <Row>
-        <Col xs={12}>
-          <TopNav />
-          <div>
-            {props.children}
-          </div>
-        </Col>
-      </Row>
-    </Container>
+    <div className="wrapper">
+      <SideBar />
+    </div>
   )
 }

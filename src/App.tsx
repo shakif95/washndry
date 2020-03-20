@@ -1,7 +1,12 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/css/bootstrap.min.css';
+import './assets/css/now-ui-dashboard.min.css';
+// import './assets/js/core/jquery.min.js';
+// import './assets/js/core/pepper.min.js';
+// import './assets/js/core/bootstrap.min.js';
+// import './assets/js/plugins/perfect-scrollbar.jquery.min.js';
+// import './assets/demo/demo.js';
 
-import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { SignIn, SignUp } from './components/auth';

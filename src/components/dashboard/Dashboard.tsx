@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SideBar } from '../nav/SideBar';
 import { NavBar } from '../nav/NavBar';
 import { Row, Col, Card } from 'react-bootstrap';
-import { FaHistory, FaCalendarDay } from 'react-icons/fa';
+import { FaHistory, FaCalendarDay, FaClock } from 'react-icons/fa';
 
 import './Dashboard.css';
 
@@ -18,7 +18,7 @@ export const Dashboard: React.FC<any> = props => {
         <NavBar />
         <div className="content">
           <Row>
-            <Col lg={6} md={6} sm={6}>
+            <Col md={4}>
               <a href="/history" className="no-underline">
                 <Card className="card-stats">
                   <Card.Body>
@@ -45,7 +45,7 @@ export const Dashboard: React.FC<any> = props => {
                 </Card>
               </a>
             </Col>
-            <Col lg={6} md={6} sm={6}>
+            <Col md={4}>
               <a href="/book-slot" className="no-underline">
                 <Card className="card-stats">
                   <Card.Body>
@@ -67,6 +67,33 @@ export const Dashboard: React.FC<any> = props => {
                     <hr />
                     <div className="stats">
                       Book Now
+                  </div>
+                  </Card.Footer>
+                </Card>
+              </a>
+            </Col>
+            <Col md={4}>
+              <a href="/upcoming" className="no-underline">
+                <Card className="card-stats">
+                  <Card.Body>
+                    <Row>
+                      <Col xs={5} md={4}>
+                        <div className="icon-big text-center icon-warning">
+                          <FaClock className="text-danger" />
+                        </div>
+                      </Col>
+                      <Col xs={7} md={8}>
+                        <div className="numbers">
+                          <p className="card-category">Appointments</p>
+                          <p className="card-title">21st Aug, 5.00pm</p>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                  <Card.Footer>
+                    <hr />
+                    <div className="stats">
+                      My Appointments
                   </div>
                   </Card.Footer>
                 </Card>

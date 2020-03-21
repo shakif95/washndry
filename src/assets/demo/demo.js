@@ -16,433 +16,272 @@ demo = {
   initDocChart: function() {
     chartColor = "#FFFFFF";
 
-    // General configuration for the charts with Line gradientStroke
-    gradientChartOptionsConfiguration = {
-      maintainAspectRatio: false,
-      legend: {
-        display: false
-      },
-      tooltips: {
-        bodySpacing: 4,
-        mode: "nearest",
-        intersect: 0,
-        position: "nearest",
-        xPadding: 10,
-        yPadding: 10,
-        caretPadding: 10
-      },
-      responsive: true,
-      scales: {
-        yAxes: [{
-          display: 0,
-          gridLines: 0,
-          ticks: {
-            display: false
-          },
-          gridLines: {
-            zeroLineColor: "transparent",
-            drawTicks: false,
-            display: false,
-            drawBorder: false
-          }
-        }],
-        xAxes: [{
-          display: 0,
-          gridLines: 0,
-          ticks: {
-            display: false
-          },
-          gridLines: {
-            zeroLineColor: "transparent",
-            drawTicks: false,
-            display: false,
-            drawBorder: false
-          }
-        }]
-      },
-      layout: {
-        padding: {
-          left: 0,
-          right: 0,
-          top: 15,
-          bottom: 15
-        }
-      }
-    };
-
-    ctx = document.getElementById('lineChartExample').getContext("2d");
-
-    gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, '#80b6f4');
-    gradientStroke.addColorStop(1, chartColor);
-
-    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    ctx = document.getElementById('chartHours').getContext("2d");
 
     myChart = new Chart(ctx, {
       type: 'line',
-      responsive: true,
+
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
         datasets: [{
-          label: "Active Users",
-          borderColor: "#f96332",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#f96332",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
-        }]
-      },
-      options: gradientChartOptionsConfiguration
-    });
-  },
-
-  initDashboardPageCharts: function() {
-
-    chartColor = "#FFFFFF";
-
-    // General configuration for the charts with Line gradientStroke
-    gradientChartOptionsConfiguration = {
-      maintainAspectRatio: false,
-      legend: {
-        display: false
-      },
-      tooltips: {
-        bodySpacing: 4,
-        mode: "nearest",
-        intersect: 0,
-        position: "nearest",
-        xPadding: 10,
-        yPadding: 10,
-        caretPadding: 10
-      },
-      responsive: 1,
-      scales: {
-        yAxes: [{
-          display: 0,
-          gridLines: 0,
-          ticks: {
-            display: false
+            borderColor: "#6bd098",
+            backgroundColor: "#6bd098",
+            pointRadius: 0,
+            pointHoverRadius: 0,
+            borderWidth: 3,
+            data: [300, 310, 316, 322, 330, 326, 333, 345, 338, 354]
           },
-          gridLines: {
-            zeroLineColor: "transparent",
-            drawTicks: false,
-            display: false,
-            drawBorder: false
-          }
-        }],
-        xAxes: [{
-          display: 0,
-          gridLines: 0,
-          ticks: {
-            display: false
+          {
+            borderColor: "#f17e5d",
+            backgroundColor: "#f17e5d",
+            pointRadius: 0,
+            pointHoverRadius: 0,
+            borderWidth: 3,
+            data: [320, 340, 365, 360, 370, 385, 390, 384, 408, 420]
           },
-          gridLines: {
-            zeroLineColor: "transparent",
-            drawTicks: false,
-            display: false,
-            drawBorder: false
+          {
+            borderColor: "#fcc468",
+            backgroundColor: "#fcc468",
+            pointRadius: 0,
+            pointHoverRadius: 0,
+            borderWidth: 3,
+            data: [370, 394, 415, 409, 425, 445, 460, 450, 478, 484]
           }
-        }]
-      },
-      layout: {
-        padding: {
-          left: 0,
-          right: 0,
-          top: 15,
-          bottom: 15
-        }
-      }
-    };
-
-    gradientChartOptionsConfigurationWithNumbersAndGrid = {
-      maintainAspectRatio: false,
-      legend: {
-        display: false
-      },
-      tooltips: {
-        bodySpacing: 4,
-        mode: "nearest",
-        intersect: 0,
-        position: "nearest",
-        xPadding: 10,
-        yPadding: 10,
-        caretPadding: 10
-      },
-      responsive: true,
-      scales: {
-        yAxes: [{
-          gridLines: 0,
-          gridLines: {
-            zeroLineColor: "transparent",
-            drawBorder: false
-          }
-        }],
-        xAxes: [{
-          display: 0,
-          gridLines: 0,
-          ticks: {
-            display: false
-          },
-          gridLines: {
-            zeroLineColor: "transparent",
-            drawTicks: false,
-            display: false,
-            drawBorder: false
-          }
-        }]
-      },
-      layout: {
-        padding: {
-          left: 0,
-          right: 0,
-          top: 15,
-          bottom: 15
-        }
-      }
-    };
-
-    var ctx = document.getElementById('bigDashboardChart').getContext("2d");
-
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, '#80b6f4');
-    gradientStroke.addColorStop(1, chartColor);
-
-    var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
-
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
-        datasets: [{
-          label: "Data",
-          borderColor: chartColor,
-          pointBorderColor: chartColor,
-          pointBackgroundColor: "#1e3d60",
-          pointHoverBackgroundColor: "#1e3d60",
-          pointHoverBorderColor: chartColor,
-          pointBorderWidth: 1,
-          pointHoverRadius: 7,
-          pointHoverBorderWidth: 2,
-          pointRadius: 5,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 190, 95]
-        }]
+        ]
       },
       options: {
-        layout: {
-          padding: {
-            left: 20,
-            right: 20,
-            top: 0,
-            bottom: 0
-          }
-        },
-        maintainAspectRatio: false,
-        tooltips: {
-          backgroundColor: '#fff',
-          titleFontColor: '#333',
-          bodyFontColor: '#666',
-          bodySpacing: 4,
-          xPadding: 12,
-          mode: "nearest",
-          intersect: 0,
-          position: "nearest"
-        },
         legend: {
-          position: "bottom",
-          fillStyle: "#FFF",
           display: false
         },
+
+        tooltips: {
+          enabled: false
+        },
+
         scales: {
           yAxes: [{
+
             ticks: {
-              fontColor: "rgba(255,255,255,0.4)",
-              fontStyle: "bold",
-              beginAtZero: true,
+              fontColor: "#9f9f9f",
+              beginAtZero: false,
               maxTicksLimit: 5,
-              padding: 10
+              //padding: 20
             },
             gridLines: {
-              drawTicks: true,
               drawBorder: false,
-              display: true,
-              color: "rgba(255,255,255,0.1)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "#ccc",
+              color: 'rgba(255,255,255,0.05)'
             }
 
           }],
+
           xAxes: [{
+            barPercentage: 1.6,
             gridLines: {
+              drawBorder: false,
+              color: 'rgba(255,255,255,0.1)',
               zeroLineColor: "transparent",
               display: false,
-
             },
             ticks: {
-              padding: 10,
-              fontColor: "rgba(255,255,255,0.4)",
-              fontStyle: "bold"
+              padding: 20,
+              fontColor: "#9f9f9f"
             }
           }]
-        }
+        },
       }
     });
 
-    var cardStatsMiniLineColor = "#fff",
-      cardStatsMiniDotColor = "#fff";
+  },
 
-    ctx = document.getElementById('lineChartExample').getContext("2d");
+  initChartsPages: function() {
+    chartColor = "#FFFFFF";
 
-    gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, '#80b6f4');
-    gradientStroke.addColorStop(1, chartColor);
-
-    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    ctx = document.getElementById('chartHours').getContext("2d");
 
     myChart = new Chart(ctx, {
       type: 'line',
-      responsive: true,
+
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
         datasets: [{
-          label: "Active Users",
-          borderColor: "#f96332",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#f96332",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
-        }]
-      },
-      options: gradientChartOptionsConfiguration
-    });
-
-
-    ctx = document.getElementById('lineChartExampleWithNumbersAndGrid').getContext("2d");
-
-    gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, '#18ce0f');
-    gradientStroke.addColorStop(1, chartColor);
-
-    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB('#18ce0f', 0.4));
-
-    myChart = new Chart(ctx, {
-      type: 'line',
-      responsive: true,
-      data: {
-        labels: ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
-        datasets: [{
-          label: "Email Stats",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
-        }]
-      },
-      options: gradientChartOptionsConfigurationWithNumbersAndGrid
-    });
-
-    var e = document.getElementById("barChartSimpleGradientsNumbers").getContext("2d");
-
-    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB('#2CA8FF', 0.6));
-
-    var a = {
-      type: "bar",
-      data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-        datasets: [{
-          label: "Active Countries",
-          backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          borderWidth: 1,
-          data: [80, 99, 86, 96, 123, 85, 100, 75, 88, 90, 123, 155]
-        }]
+            borderColor: "#6bd098",
+            backgroundColor: "#6bd098",
+            pointRadius: 0,
+            pointHoverRadius: 0,
+            borderWidth: 3,
+            data: [300, 310, 316, 322, 330, 326, 333, 345, 338, 354]
+          },
+          {
+            borderColor: "#f17e5d",
+            backgroundColor: "#f17e5d",
+            pointRadius: 0,
+            pointHoverRadius: 0,
+            borderWidth: 3,
+            data: [320, 340, 365, 360, 370, 385, 390, 384, 408, 420]
+          },
+          {
+            borderColor: "#fcc468",
+            backgroundColor: "#fcc468",
+            pointRadius: 0,
+            pointHoverRadius: 0,
+            borderWidth: 3,
+            data: [370, 394, 415, 409, 425, 445, 460, 450, 478, 484]
+          }
+        ]
       },
       options: {
-        maintainAspectRatio: false,
         legend: {
           display: false
         },
+
         tooltips: {
-          bodySpacing: 4,
-          mode: "nearest",
-          intersect: 0,
-          position: "nearest",
-          xPadding: 10,
-          yPadding: 10,
-          caretPadding: 10
+          enabled: false
         },
-        responsive: 1,
+
         scales: {
           yAxes: [{
-            gridLines: 0,
+
+            ticks: {
+              fontColor: "#9f9f9f",
+              beginAtZero: false,
+              maxTicksLimit: 5,
+              //padding: 20
+            },
             gridLines: {
-              zeroLineColor: "transparent",
-              drawBorder: false
+              drawBorder: false,
+              zeroLineColor: "#ccc",
+              color: 'rgba(255,255,255,0.05)'
             }
+
           }],
+
           xAxes: [{
-            display: 0,
-            gridLines: 0,
+            barPercentage: 1.6,
+            gridLines: {
+              drawBorder: false,
+              color: 'rgba(255,255,255,0.1)',
+              zeroLineColor: "transparent",
+              display: false,
+            },
+            ticks: {
+              padding: 20,
+              fontColor: "#9f9f9f"
+            }
+          }]
+        },
+      }
+    });
+
+
+    ctx = document.getElementById('chartEmail').getContext("2d");
+
+    myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: [1, 2, 3],
+        datasets: [{
+          label: "Emails",
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          backgroundColor: [
+            '#e3e3e3',
+            '#4acccd',
+            '#fcc468',
+            '#ef8157'
+          ],
+          borderWidth: 0,
+          data: [342, 480, 530, 120]
+        }]
+      },
+
+      options: {
+
+        legend: {
+          display: false
+        },
+
+        pieceLabel: {
+          render: 'percentage',
+          fontColor: ['white'],
+          precision: 2
+        },
+
+        tooltips: {
+          enabled: false
+        },
+
+        scales: {
+          yAxes: [{
+
             ticks: {
               display: false
             },
             gridLines: {
+              drawBorder: false,
               zeroLineColor: "transparent",
-              drawTicks: false,
+              color: 'rgba(255,255,255,0.05)'
+            }
+
+          }],
+
+          xAxes: [{
+            barPercentage: 1.6,
+            gridLines: {
+              drawBorder: false,
+              color: 'rgba(255,255,255,0.1)',
+              zeroLineColor: "transparent"
+            },
+            ticks: {
               display: false,
-              drawBorder: false
             }
           }]
         },
-        layout: {
-          padding: {
-            left: 0,
-            right: 0,
-            top: 15,
-            bottom: 15
-          }
-        }
+      }
+    });
+
+    var speedCanvas = document.getElementById("speedChart");
+
+    var dataFirst = {
+      data: [0, 19, 15, 20, 30, 40, 40, 50, 25, 30, 50, 70],
+      fill: false,
+      borderColor: '#fbc658',
+      backgroundColor: 'transparent',
+      pointBorderColor: '#fbc658',
+      pointRadius: 4,
+      pointHoverRadius: 4,
+      pointBorderWidth: 8,
+    };
+
+    var dataSecond = {
+      data: [0, 5, 10, 12, 20, 27, 30, 34, 42, 45, 55, 63],
+      fill: false,
+      borderColor: '#51CACF',
+      backgroundColor: 'transparent',
+      pointBorderColor: '#51CACF',
+      pointRadius: 4,
+      pointHoverRadius: 4,
+      pointBorderWidth: 8
+    };
+
+    var speedData = {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      datasets: [dataFirst, dataSecond]
+    };
+
+    var chartOptions = {
+      legend: {
+        display: false,
+        position: 'top'
       }
     };
 
-    var viewsChart = new Chart(e, a);
+    var lineChart = new Chart(speedCanvas, {
+      type: 'line',
+      hover: false,
+      data: speedData,
+      options: chartOptions
+    });
   },
 
   initGoogleMaps: function() {
@@ -453,122 +292,91 @@ demo = {
       scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
       styles: [{
         "featureType": "water",
-        "elementType": "geometry",
         "stylers": [{
-          "color": "#e9e9e9"
+          "saturation": 43
         }, {
-          "lightness": 17
+          "lightness": -11
+        }, {
+          "hue": "#0088ff"
         }]
       }, {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#f5f5f5"
-        }, {
-          "lightness": 20
-        }]
-      }, {
-        "featureType": "road.highway",
+        "featureType": "road",
         "elementType": "geometry.fill",
         "stylers": [{
-          "color": "#ffffff"
+          "hue": "#ff0000"
         }, {
-          "lightness": 17
+          "saturation": -100
+        }, {
+          "lightness": 99
         }]
       }, {
-        "featureType": "road.highway",
+        "featureType": "road",
         "elementType": "geometry.stroke",
         "stylers": [{
-          "color": "#ffffff"
+          "color": "#808080"
         }, {
-          "lightness": 29
-        }, {
-          "weight": 0.2
+          "lightness": 54
         }]
       }, {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.fill",
         "stylers": [{
-          "color": "#ffffff"
-        }, {
-          "lightness": 18
-        }]
-      }, {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#ffffff"
-        }, {
-          "lightness": 16
-        }]
-      }, {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#f5f5f5"
-        }, {
-          "lightness": 21
+          "color": "#ece2d9"
         }]
       }, {
         "featureType": "poi.park",
-        "elementType": "geometry",
+        "elementType": "geometry.fill",
         "stylers": [{
-          "color": "#dedede"
-        }, {
-          "lightness": 21
+          "color": "#ccdca1"
         }]
       }, {
-        "elementType": "labels.text.stroke",
-        "stylers": [{
-          "visibility": "on"
-        }, {
-          "color": "#ffffff"
-        }, {
-          "lightness": 16
-        }]
-      }, {
+        "featureType": "road",
         "elementType": "labels.text.fill",
         "stylers": [{
-          "saturation": 36
-        }, {
-          "color": "#333333"
-        }, {
-          "lightness": 40
+          "color": "#767676"
         }]
       }, {
-        "elementType": "labels.icon",
+        "featureType": "road",
+        "elementType": "labels.text.stroke",
+        "stylers": [{
+          "color": "#ffffff"
+        }]
+      }, {
+        "featureType": "poi",
         "stylers": [{
           "visibility": "off"
         }]
       }, {
-        "featureType": "transit",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#f2f2f2"
-        }, {
-          "lightness": 19
-        }]
-      }, {
-        "featureType": "administrative",
+        "featureType": "landscape.natural",
         "elementType": "geometry.fill",
         "stylers": [{
-          "color": "#fefefe"
+          "visibility": "on"
         }, {
-          "lightness": 20
+          "color": "#b8cb93"
         }]
       }, {
-        "featureType": "administrative",
-        "elementType": "geometry.stroke",
+        "featureType": "poi.park",
         "stylers": [{
-          "color": "#fefefe"
-        }, {
-          "lightness": 17
-        }, {
-          "weight": 1.2
+          "visibility": "on"
+        }]
+      }, {
+        "featureType": "poi.sports_complex",
+        "stylers": [{
+          "visibility": "on"
+        }]
+      }, {
+        "featureType": "poi.medical",
+        "stylers": [{
+          "visibility": "on"
+        }]
+      }, {
+        "featureType": "poi.business",
+        "stylers": [{
+          "visibility": "simplified"
         }]
       }]
-    };
 
+    }
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     var marker = new google.maps.Marker({
@@ -578,5 +386,23 @@ demo = {
 
     // To add the marker to the map, call setMap();
     marker.setMap(map);
+  },
+
+  showNotification: function(from, align) {
+    color = 'primary';
+
+    $.notify({
+      icon: "nc-icon nc-bell-55",
+      message: "Welcome to <b>Paper Dashboard</b> - a beautiful bootstrap dashboard for every web developer."
+
+    }, {
+      type: color,
+      timer: 8000,
+      placement: {
+        from: from,
+        align: align
+      }
+    });
   }
+
 };

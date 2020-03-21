@@ -1,6 +1,6 @@
 import React from 'react';
 import './assets/css/bootstrap.min.css';
-import './assets/css/now-ui-dashboard.min.css';
+import './assets/css/paper-dashboard.css';
 // import './assets/js/core/jquery.min.js';
 // import './assets/js/core/pepper.min.js';
 // import './assets/js/core/bootstrap.min.js';

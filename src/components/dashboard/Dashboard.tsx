@@ -10,7 +10,7 @@ export interface DashboardProps {
   children?: React.Component;
 }
 
-export const Dashboard: React.FC<any> = ({children}) => {
+export const Dashboard: React.FC<any> = ({ children }) => {
   return (
     <div className="wrapper">
       <SideBar />
@@ -100,10 +100,8 @@ export const Dashboard: React.FC<any> = ({children}) => {
               </a>
             </Col>
           </Row>
+          {children}
         </div>
-      </div>
-      <div>
-        {children}
       </div>
     </div>
 

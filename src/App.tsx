@@ -10,7 +10,7 @@ import './assets/css/paper-dashboard.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { SignIn, SignUp } from './components/auth';
-import { Dashboard } from './components/dashboard/Dashboard';
+import { Dashboard, Appointments } from './components/dashboard';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/appointments" component={Appointments}></Route>
         </Switch>
       </Router>
     </div>

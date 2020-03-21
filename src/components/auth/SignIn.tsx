@@ -3,8 +3,8 @@ import { Container, Row, Col, Form as ReactForm, Button } from 'react-bootstrap'
 
 
 export const SignIn: React.FC<any> = props => {
-    return (
-      <Container fluid>
+  return (
+    <Container fluid>
       <Row className="align-items-center justify-content-center">
         <Col xs={12} md={3}>
           <h1 className="display-4 text-center mb-3 mt-5">Sign Up</h1>
@@ -29,17 +29,19 @@ export const SignIn: React.FC<any> = props => {
               />
             </ReactForm.Group>
 
-            <div className="text-center">
-              <Button
-                variant="primary"
-                block
-              >
-                Sign In
+            <a href="/dashboard">
+              <div className="text-center">
+                <Button
+                  variant="primary"
+                  block
+                >
+                  Sign In
             </Button>
-            </div>
+              </div>
+            </a>
           </ReactForm>
         </Col>
       </Row>
     </Container>
-    )
+  )
 };

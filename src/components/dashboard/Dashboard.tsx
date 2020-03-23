@@ -73,7 +73,7 @@ export const Dashboard: React.FC<any> = ({ children }) => {
               </a>
             </Col>
             <Col md={4}>
-              <a href="/upcoming" className="no-underline">
+              <a href="/appointments" className="no-underline">
                 <Card className="card-stats">
                   <Card.Body>
                     <Row>

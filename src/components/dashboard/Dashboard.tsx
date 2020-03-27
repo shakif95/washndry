@@ -85,7 +85,7 @@ export const Dashboard: React.FC<any> = ({ children }) => {
                       <Col xs={7} md={8}>
                         <div className="numbers">
                           <p className="card-category">Appointments</p>
-                          <p className="card-title">21st Aug, 5.00pm</p>
+                          <p className="card-title">N/A</p>
                         </div>
                       </Col>
                     </Row>
@@ -94,7 +94,7 @@ export const Dashboard: React.FC<any> = ({ children }) => {
                     <hr />
                     <div className="stats">
                       My Appointments
-                  </div>
+                    </div>
                   </Card.Footer>
                 </Card>
               </a>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dashboard } from '../Dashboard';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Row, Col, Card, Button } from 'react-bootstrap';
 
 import './Appointments.css';
 
@@ -21,6 +21,9 @@ export const Appointments: React.FC<any> = props => {
             <Card.Body>
               <Row>
                 <Col xs={12} md={6} lg={3}>
+                  <Button>
+                    Book Now
+                  </Button>
                 </Col>
               </Row>
             </Card.Body>

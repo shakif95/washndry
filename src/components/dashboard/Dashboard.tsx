@@ -5,6 +5,7 @@ import { Row, Col, Card } from 'react-bootstrap';
 import { FaHistory, FaCalendarDay, FaClock } from 'react-icons/fa';
 
 import './Dashboard.css';
+import { Link } from 'react-router-dom';
 
 export interface DashboardProps {
   children?: React.Component;
@@ -19,7 +20,7 @@ export const Dashboard: React.FC<any> = ({ children }) => {
         <div className="content">
           <Row>
             <Col md={4}>
-              <a href="/history" className="no-underline">
+              <Link to="/history" className="no-underline">
                 <Card className="card-stats">
                   <Card.Body>
                     <Row>
@@ -43,10 +44,10 @@ export const Dashboard: React.FC<any> = ({ children }) => {
                   </div>
                   </Card.Footer>
                 </Card>
-              </a>
+              </Link>
             </Col>
             <Col md={4}>
-              <a href="/book-slot" className="no-underline">
+              <Link to="/book-slot" className="no-underline">
                 <Card className="card-stats">
                   <Card.Body>
                     <Row>
@@ -70,10 +71,10 @@ export const Dashboard: React.FC<any> = ({ children }) => {
                   </div>
                   </Card.Footer>
                 </Card>
-              </a>
+              </Link>
             </Col>
             <Col md={4}>
-              <a href="/appointments" className="no-underline">
+              <Link to="/appointments" className="no-underline">
                 <Card className="card-stats">
                   <Card.Body>
                     <Row>
@@ -97,7 +98,7 @@ export const Dashboard: React.FC<any> = ({ children }) => {
                     </div>
                   </Card.Footer>
                 </Card>
-              </a>
+              </Link>
             </Col>
           </Row>
           {children}

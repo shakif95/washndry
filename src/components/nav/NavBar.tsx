@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Container, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 export const NavBar: React.FC<any> = props => {
   return (
     <nav className="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
@@ -34,9 +35,11 @@ export const NavBar: React.FC<any> = props => {
                 <a className="dropdown-item" href="/action3">Something else here</a>
               </div>
             </li> */}
-            <Button variant="danger">
-              Sign Out
-            </Button>
+            <Link to="/">
+              <Button variant="danger">
+                Sign Out
+              </Button>
+            </Link>
           </ul>
         </div>
       </Container>

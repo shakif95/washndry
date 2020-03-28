@@ -10,7 +10,7 @@ export interface DashboardProps {
   children?: React.Component;
 }
 
-export const Dashboard: React.FC<any> = ({children}) => {
+export const Dashboard: React.FC<any> = ({ children }) => {
   return (
     <div className="wrapper">
       <SideBar />
@@ -73,7 +73,7 @@ export const Dashboard: React.FC<any> = ({children}) => {
               </a>
             </Col>
             <Col md={4}>
-              <a href="/upcoming" className="no-underline">
+              <a href="/appointments" className="no-underline">
                 <Card className="card-stats">
                   <Card.Body>
                     <Row>
@@ -85,7 +85,7 @@ export const Dashboard: React.FC<any> = ({children}) => {
                       <Col xs={7} md={8}>
                         <div className="numbers">
                           <p className="card-category">Appointments</p>
-                          <p className="card-title">21st Aug, 5.00pm</p>
+                          <p className="card-title">05</p>
                         </div>
                       </Col>
                     </Row>
@@ -94,16 +94,14 @@ export const Dashboard: React.FC<any> = ({children}) => {
                     <hr />
                     <div className="stats">
                       My Appointments
-                  </div>
+                    </div>
                   </Card.Footer>
                 </Card>
               </a>
             </Col>
           </Row>
+          {children}
         </div>
-      </div>
-      <div>
-        {children}
       </div>
     </div>
 

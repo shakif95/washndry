@@ -7,7 +7,7 @@ import './assets/css/paper-dashboard.css';
 // import './assets/js/plugins/perfect-scrollbar.jquery.min.js';
 // import './assets/demo/demo.js';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import { SignIn, SignUp } from './components/auth';
 import { Dashboard, Appointments } from './components/dashboard';
@@ -21,6 +21,7 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/appointments" component={Appointments}></Route>
+          <Redirect to="/signin" />
         </Switch>
       </Router>
     </div>

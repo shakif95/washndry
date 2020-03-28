@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Logo } from './Logo';
+import { Link } from 'react-router-dom';
 
 export const SideBar: React.FC<any> = props => {
   return (
@@ -9,16 +10,16 @@ export const SideBar: React.FC<any> = props => {
         <div className="sidebar-wrapper" id="sidebar-wrapper">
           <ul className="nav">
             <li className="active ">
-              <a href="./dashboard">
+              <Link to="./dashboard">
                 <i className="now-ui-icons design_app"></i>
                 <p>Dashboard</p>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/user-profile">
+              <Link to="/user-profile">
                 <i className="now-ui-icons users_single-02"></i>
                 <p>User Profile</p>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

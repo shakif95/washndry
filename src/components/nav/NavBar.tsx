@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 export const NavBar: React.FC<any> = props => {
   return (
     <nav className="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
@@ -21,7 +21,7 @@ export const NavBar: React.FC<any> = props => {
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navigation">
           <ul className="navbar-nav">
-            <li className="nav-item btn-rotate dropdown">
+            {/* <li className="nav-item btn-rotate dropdown">
               <a className="nav-link dropdown-toggle" href="/dashboard" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i className="nc-icon nc-single-02"></i>
                 <p>
@@ -33,7 +33,10 @@ export const NavBar: React.FC<any> = props => {
                 <a className="dropdown-item" href="/action2">Another action</a>
                 <a className="dropdown-item" href="/action3">Something else here</a>
               </div>
-            </li>
+            </li> */}
+            <Button variant="danger">
+              Sign Out
+            </Button>
           </ul>
         </div>
       </Container>

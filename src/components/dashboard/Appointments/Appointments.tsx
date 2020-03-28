@@ -3,6 +3,8 @@ import { Dashboard } from '../Dashboard';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 
 import './Appointments.css';
+import '../common.css';
+import { Link } from 'react-router-dom';
 
 export const Appointments: React.FC<any> = props => {
   return (
@@ -21,9 +23,11 @@ export const Appointments: React.FC<any> = props => {
             <Card.Body>
               <Row>
                 <Col xs={12} md={6} lg={3}>
-                  <Button variant="success">
-                    Book Now
-                  </Button>
+                  <Link to="/book-slot">
+                    <Button variant="success">
+                      Book Now
+                    </Button>
+                  </Link>
                 </Col>
               </Row>
               <Row>

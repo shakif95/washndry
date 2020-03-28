@@ -3,3 +3,18 @@
   text-transform: none;
   font-weight: 100;
 }
+
+.card-body-spacing {
+  display: flex;
+  justify-content: space-around;
+}
+
+.appointment-card {
+  background-color: #e7ebef;
+}
+
+.day {
+  font-size: medium;
+  font-variant: all-petite-caps;
+  font-weight: 600;
+}

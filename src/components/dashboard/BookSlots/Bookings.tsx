@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dashboard } from '../Dashboard';
 
-import { Row, Col, Card } from 'react-bootstrap';
+import { Row, Col, Card, Modal, Container, Form, Button } from 'react-bootstrap';
 import { Calendar, momentLocalizer, Event, stringOrDate } from 'react-big-calendar';
 import moment from 'moment';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
@@ -38,6 +38,8 @@ interface EventArgs {
 export const Bookings: React.FC<any> = props => {
 
     const [events, setEvents] = React.useState(initialEvents);
+    const [showBookingModal, setShowBookingModal] = React.useState(false);
+    const [selectedEvent, setSelectedEvent] = React.useState<EventArgs>();
 
     const onEventResize = ({ event, start, end, allDay }: EventArgs) => {
         console.log("resize");
@@ -62,6 +64,10 @@ export const Bookings: React.FC<any> = props => {
                 id: sortedIds[sortedIds.length - 1]
             }
         }])
+    }
+
+    const handleBookingModlHide = () => {
+        setShowBookingModal(false);
     }
 
     return (
@@ -92,11 +98,72 @@ export const Bookings: React.FC<any> = props => {
                                 views={['week', 'day']}
                                 min={new Date(2017, 10, 0, 10, 0, 0)}
                                 max={new Date(2017, 10, 0, 22, 0, 0)}
+                                onSelectEvent = {(event: Event) => {
+                                    setSelectedEvent({
+                                        event: event,
+                                        start: (event.start) ? moment(event.start)
+                                                                .format("dddd, MMMM Do YYYY, h:mm:ss a") 
+                                                                : moment()
+                                                                .format("dddd, MMMM Do YYYY, h:mm:ss a"),
+                                        end: (event.end) ? moment(event.end)
+                                                            .format("dddd, MMMM Do YYYY, h:mm:ss a") 
+                                                            : moment()
+                                                            .format("dddd, MMMM Do YYYY, h:mm:ss a"),
+                                    });
+                                    
+                                    setShowBookingModal(true);
+                                }}
                             />
                         </Card.Body>
                     </Card>
                 </Col>
             </Row>
+
+            <Modal show={showBookingModal} onHide={handleBookingModlHide}>
+                <Modal.Header closeButton>
+                    <Container fluid>
+                        <h3>New Booking</h3>
+                    </Container>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container fluid>
+                        <Form>
+                            <Form.Group>
+                                <Form.Label>Start</Form.Label>
+                                <Form.Control type="text" value={selectedEvent?.start as string} disabled/>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>End</Form.Label>
+                                <Form.Control type="text" value={selectedEvent?.end as string} disabled/>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Notes</Form.Label>
+                                <Form.Control 
+                                    type="textarea"
+                                    placeholder="Any additional notes"
+                                />
+                            </Form.Group>
+                            
+                            <div>
+                                <Button
+                                    variant="primary"
+                                    block
+                                >
+                                    Submit
+                                </Button>
+                                <Button
+                                    variant="secondary"
+                                    block
+                                    onClick={() => setShowBookingModal(false)}
+                                >
+                                    Cancel
+                                </Button>
+                            </div>
+                        </Form>
+                    </Container>
+                </Modal.Body>
+            </Modal>
+
         </Dashboard>
     )
 }

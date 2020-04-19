@@ -15,6 +15,7 @@ import { SignIn, SignUp } from './components/auth';
 import { Dashboard, Appointments, Bookings } from './components/dashboard';
 import { store, history } from './store';
 import { ConnectedRouter } from 'connected-react-router';
+import { Routes } from './consts';
 
 function App() {
   return (
@@ -22,12 +23,12 @@ function App() {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Switch>
-            <Route path="/signin" component={SignIn} />
-            <Route path="/signup" component={SignUp} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/appointments" component={Appointments}></Route>
-            <Route path="/book-slot" component={Bookings}></Route>
-            <Redirect to="/signin" />
+            <Route path={Routes.SINGNIN} component={SignIn} />
+            <Route path={Routes.SINGNUP} component={SignUp} />
+            <Route path={Routes.DASHBOARD} component={Dashboard} />
+            <Route path={Routes.APPOINTEMENTS} component={Appointments} />
+            <Route path={Routes.BOOKSLOT} component={Bookings} />
+            <Redirect to={Routes.SINGNIN} />
           </Switch>
         </ConnectedRouter>
       </Provider>

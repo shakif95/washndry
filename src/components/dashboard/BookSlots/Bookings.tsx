@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Dashboard } from '../Dashboard';
 
-import { Row, Col, Card, Modal, Container, Form, Button } from 'react-bootstrap';
+import { Row, Col, Card, Modal, Container, Button, Form as ReactForm } from 'react-bootstrap';
+import { Form, withFormik, FormikProps } from 'formik';
 import { Calendar, momentLocalizer, Event, stringOrDate } from 'react-big-calendar';
 import moment from 'moment';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
@@ -10,6 +11,11 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import './Bookings.css';
 import '../common.css';
+import { createBooking, Booking } from '../../../store/slices/bookingSlice';
+import { push } from 'connected-react-router';
+import { Routes } from '../../../consts';
+import { connect, ResolveThunks } from 'react-redux';
+import { createBookingSuccessAction } from '../../../store/actions/bookingActions';
 
 const localizer = momentLocalizer(moment);
 
@@ -35,7 +41,16 @@ interface EventArgs {
     allDay?: boolean;
 }
 
-export const Bookings: React.FC<any> = props => {
+export interface BookingsFormValues extends Booking {
+
+}
+
+export const BookingsComponent: React.FC<FormikProps<BookingsFormValues>> = ({
+    values,
+    setValues,
+    isSubmitting,
+    handleChange
+}) => {
 
     const [events, setEvents] = React.useState(initialEvents);
     const [showBookingModal, setShowBookingModal] = React.useState(false);
@@ -44,7 +59,7 @@ export const Bookings: React.FC<any> = props => {
     const onEventResize = ({ event, start, end, allDay }: EventArgs) => {
         console.log("resize");
     };
-    
+
     const onEventDrop = ({ event, start, end, allDay }: EventArgs) => {
         let afterremoveevents = events.filter(ev => ev.resource.id !== event.resource.id);
         console.log(afterremoveevents);
@@ -68,6 +83,26 @@ export const Bookings: React.FC<any> = props => {
 
     const handleBookingModlHide = () => {
         setShowBookingModal(false);
+    }
+
+    const handleSelectedEvent = (event: Event) => {
+        setSelectedEvent({
+            event: event,
+            start: (event.start) ? moment(event.start)
+                .format("dddd, MMMM Do YYYY, h:mm:ss a")
+                : moment()
+                    .format("dddd, MMMM Do YYYY, h:mm:ss a"),
+            end: (event.end) ? moment(event.end)
+                .format("dddd, MMMM Do YYYY, h:mm:ss a")
+                : moment()
+                    .format("dddd, MMMM Do YYYY, h:mm:ss a"),
+        });
+        setValues({
+            ...values,
+            startDateTime: selectedEvent?.start as string,
+            endDateTime: selectedEvent?.end as string
+        });
+        setShowBookingModal(true);
     }
 
     return (
@@ -98,21 +133,7 @@ export const Bookings: React.FC<any> = props => {
                                 views={['week', 'day']}
                                 min={new Date(2017, 10, 0, 10, 0, 0)}
                                 max={new Date(2017, 10, 0, 22, 0, 0)}
-                                onSelectEvent = {(event: Event) => {
-                                    setSelectedEvent({
-                                        event: event,
-                                        start: (event.start) ? moment(event.start)
-                                                                .format("dddd, MMMM Do YYYY, h:mm:ss a") 
-                                                                : moment()
-                                                                .format("dddd, MMMM Do YYYY, h:mm:ss a"),
-                                        end: (event.end) ? moment(event.end)
-                                                            .format("dddd, MMMM Do YYYY, h:mm:ss a") 
-                                                            : moment()
-                                                            .format("dddd, MMMM Do YYYY, h:mm:ss a"),
-                                    });
-                                    
-                                    setShowBookingModal(true);
-                                }}
+                                onSelectEvent={handleSelectedEvent}
                             />
                         </Card.Body>
                     </Card>
@@ -127,27 +148,45 @@ export const Bookings: React.FC<any> = props => {
                 </Modal.Header>
                 <Modal.Body>
                     <Container fluid>
-                        <Form>
-                            <Form.Group>
-                                <Form.Label>Start</Form.Label>
-                                <Form.Control type="text" value={selectedEvent?.start as string} disabled/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>End</Form.Label>
-                                <Form.Control type="text" value={selectedEvent?.end as string} disabled/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Notes</Form.Label>
-                                <Form.Control 
+                        <Form noValidate>
+                            <ReactForm.Group>
+                                <ReactForm.Label>Start</ReactForm.Label>
+                                <ReactForm.Control
+                                    name="startDateTime"
+                                    type="text"
+                                    onChange={handleChange}
+                                    // value={selectedEvent?.start as string}
+                                    value={values.startDateTime as string}
+                                    disabled
+                                />
+                            </ReactForm.Group>
+                            <ReactForm.Group>
+                                <ReactForm.Label>End</ReactForm.Label>
+                                <ReactForm.Control
+                                    name="endDateTime"
+                                    type="text"
+                                    onChange={handleChange}
+                                    // value={selectedEvent?.end as string}
+                                    value={values.endDateTime as string}
+                                    disabled
+                                />
+                            </ReactForm.Group>
+                            <ReactForm.Group>
+                                <ReactForm.Label>Notes</ReactForm.Label>
+                                <ReactForm.Control
+                                    name="additionalNotes"
                                     type="textarea"
+                                    value={values.additionalNotes}
+                                    onChange={handleChange}
                                     placeholder="Any additional notes"
                                 />
-                            </Form.Group>
-                            
+                            </ReactForm.Group>
+
                             <div>
                                 <Button
                                     variant="primary"
                                     block
+                                    type="submit"
                                 >
                                     Submit
                                 </Button>
@@ -167,3 +206,28 @@ export const Bookings: React.FC<any> = props => {
         </Dashboard>
     )
 }
+
+const mapDispatchToProps = {
+    createBooking: createBooking,
+    navigateToBookingSection: () => push(Routes.BOOKSLOT)
+}
+
+const initialValues: BookingsFormValues = {
+    startDateTime: '',
+    endDateTime: '',
+    additionalNotes: ''
+}
+
+const mapPropsToValues = () => (initialValues);
+
+export type BookingsProps = ResolveThunks<typeof mapDispatchToProps>;
+
+export const Bookings = connect(
+    null,
+    mapDispatchToProps
+)(
+    withFormik({
+        mapPropsToValues,
+        handleSubmit: createBookingSuccessAction
+    })(BookingsComponent)
+)
